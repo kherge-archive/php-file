@@ -23,12 +23,20 @@ class File extends SplFileObject
         $context = null
     ) {
         try {
-            parent::__construct(
-                $filename,
-                $open_mode,
-                $use_include_path,
-                $context
-            );
+            if (null === $context) {
+                parent::__construct(
+                    $filename,
+                    $open_mode,
+                    $use_include_path
+                );
+            } else {
+                parent::__construct(
+                    $filename,
+                    $open_mode,
+                    $use_include_path,
+                    $context
+                );
+            }
         } catch (Exception $exception) {
             throw FileException::openFailed($filename, $exception);
         }
