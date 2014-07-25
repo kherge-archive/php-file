@@ -7,13 +7,13 @@ File
 [![Latest Unstable Version][]](https://packagist.org/packages/kherge/file)
 [![Total Downloads][]](https://packagist.org/packages/kherge/file)
 
-An extension of SplFileObject that uses exceptions.
+An extension of `SplFileObject` that uses exceptions.
 
 Usage
 -----
 
 You would use this class the exact same way you use `SplFileObject`, because
-it is `SplFileObject`. The only difference is that errors will thrown an
+it is `SplFileObject`. The only difference is that errors will throw an
 exception when they occur.
 
 ```php
@@ -28,13 +28,13 @@ $file->fseek(-1);
  * KHerGe\File\Exception\FileException: The file "test.txt" could not be seeked. in /path/to/file/src/lib/KHerGe/File/Exception/FileException.php on line 157
  *
  * Call Stack:
- *     0.0001     248992   1. {main}() /home/kherrera/Workspace/PHP/file/test.php:0
- *     0.0011     382928   2. KHerGe\File\File->fseek() /home/kherrera/Workspace/PHP/file/test.php:6
+ *     0.0001     248992   1. {main}() /path/to/file/test.php:0
+ *     0.0011     382928   2. KHerGe\File\File->fseek() /path/to/file/test.php:6
  */
 ```
 
-Exceptions originally thrown by `SplFileObject` will also be wrapped in the
-`FileException` class included with this library.
+> Exceptions originally thrown by `SplFileObject` will also be wrapped in the
+> `FileException` class included with this library.
 
 Requirements
 ------------
