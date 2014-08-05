@@ -6,6 +6,7 @@ File
 [![Latest Stable Version][]](https://packagist.org/packages/kherge/file)
 [![Latest Unstable Version][]](https://packagist.org/packages/kherge/file)
 [![Total Downloads][]](https://packagist.org/packages/kherge/file)
+[![SensioLabsInsight][]](https://insight.sensiolabs.com/projects/cd51bc0a-cb5c-41df-b500-9be18b98fd5d)
 
 An extension of `SplFileObject` that uses exceptions.
 
@@ -61,5 +62,6 @@ This library is available under the [MIT license](LICENSE).
 [Latest Stable Version]: https://poser.pugx.org/kherge/file/v/stable.png
 [Latest Unstable Version]: https://poser.pugx.org/kherge/file/v/unstable.png
 [Total Downloads]: https://poser.pugx.org/kherge/file/downloads.png
+[SensioLabsInsight]: https://insight.sensiolabs.com/projects/cd51bc0a-cb5c-41df-b500-9be18b98fd5d/mini.png
 
 [Composer]: http://getcomposer.org/
