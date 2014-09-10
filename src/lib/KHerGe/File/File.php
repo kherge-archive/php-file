@@ -43,6 +43,64 @@ class File extends SplFileObject
     }
 
     /**
+     * Creates a new file object.
+     *
+     * @param string   $filename         The path to the file.
+     * @param string   $open_mode        The file open mode.
+     * @param boolean  $use_include_path Use the include path?
+     * @param resource $context          A valid context resource.
+     *
+     * @return File The new file object.
+     */
+    public static function create(
+        $filename,
+        $open_mode = 'r',
+        $use_include_path = false,
+        $context = null
+    ) {
+        return new static($filename, $open_mode, $use_include_path, $context);
+    }
+
+    /**
+     * Creates a new temporary file and returns its file object.
+     *
+     * @param string $prefix The prefix for the name of the temporary file. (default: php-)
+     * @param string $mode   The file open mode. (default: w+)
+     *
+     * @return File The new file object.
+     *
+     * @throws FileException If the temporary file could not be created.
+     */
+    public static function createTemp($prefix = 'php-', $mode = 'w+')
+    {
+        return new static(static::createTempPath($prefix), $mode);
+    }
+
+    /**
+     * Creates a new temporary file and returns its path.
+     *
+     * @param string $prefix The prefix for the name of the temporary file.
+     *
+     * @return string The path to the temporary file.
+     *
+     * @throws FileException If the temporary file could not be created.
+     */
+    public static function createTempPath($prefix = 'php-')
+    {
+        $temp = tempnam(sys_get_temp_dir(), $prefix);
+
+        if (false === $temp) {
+            // @codeCoverageIgnoreStart
+            throw new FileException(
+                'A new temporary file could not be created.'
+            );
+        }
+        // @codeCoverageIgnoreEnd
+
+        return $temp;
+    }
+
+    /**
      * @override
      */
     public function fflush()

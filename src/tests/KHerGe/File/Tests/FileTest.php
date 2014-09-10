@@ -39,6 +39,56 @@ class FileTest extends TestCase
     }
 
     /**
+     * Verifies that we can create a new file object.
+     *
+     * @covers KHerGe\File\File::create
+     */
+    public function testCreate()
+    {
+        $this->assertInstanceOf(
+            'KHerGe\File\File',
+            File::create($this->file)
+        );
+    }
+
+    /**
+     * Verifies that we can create a new temporary file object.
+     *
+     * @covers KHerGe\File\File::createTemp
+     */
+    public function testCreateTemp()
+    {
+        $file = File::createTemp(1);
+
+        $this->assertInstanceOf(
+            'KHerGe\File\File',
+            $file
+        );
+
+        $this->assertStringStartsWith(
+            sys_get_temp_dir(),
+            $file->getPathname()
+        );
+
+        unlink($file->getPathname());
+    }
+
+    /**
+     * Verifies that we can create a new temporary file path.
+     *
+     * @covers KHerGe\File\File::createTempPath
+     */
+    public function testCreateTempPath()
+    {
+        $file = File::createTempPath('taco-');
+
+        $this->assertStringStartsWith(sys_get_temp_dir(), $file);
+        $this->assertContains('taco-', $file);
+
+        unlink($file);
+    }
+
+    /**
      * Verifies that a failed flush throws an exception.
      *
      * @covers KHerGe\File\File::fflush
