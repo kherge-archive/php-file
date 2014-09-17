@@ -74,6 +74,33 @@ class FileTest extends TestCase
     }
 
     /**
+     * Verifies that we can create a new, named temporary file object.
+     *
+     * @covers KHerGe\File\File::createTempNamed
+     */
+    public function testCreateTempNamed()
+    {
+        $file = File::createTempNamed('test.php');
+
+        $this->assertInstanceOf(
+            'KHerGe\File\File',
+            $file
+        );
+
+        $this->assertStringStartsWith(
+            sys_get_temp_dir(),
+            $file->getPathname()
+        );
+
+        $this->assertStringEndsWith(
+            'test.php',
+            $file->getPathname()
+        );
+
+        unlink($file->getPathname());
+    }
+
+    /**
      * Verifies that we can create a new temporary file path.
      *
      * @covers KHerGe\File\File::createTempPath
@@ -84,6 +111,21 @@ class FileTest extends TestCase
 
         $this->assertStringStartsWith(sys_get_temp_dir(), $file);
         $this->assertContains('taco-', $file);
+
+        unlink($file);
+    }
+
+    /**
+     * Verifies that we can create a new, named temporary file path.
+     *
+     * @covers KHerGe\File\File::createTempPathNamed
+     */
+    public function testCreateTempPathNamed()
+    {
+        $file = File::createTempPathNamed('test.php');
+
+        $this->assertStringStartsWith(sys_get_temp_dir(), $file);
+        $this->assertStringEndsWith('test.php', $file);
 
         unlink($file);
     }

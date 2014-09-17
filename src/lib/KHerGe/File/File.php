@@ -50,7 +50,7 @@ class File extends SplFileObject
      * @param boolean  $use_include_path Use the include path?
      * @param resource $context          A valid context resource.
      *
-     * @return File The new file object.
+     * @return $this The new file object.
      */
     public static function create(
         $filename,
@@ -67,13 +67,26 @@ class File extends SplFileObject
      * @param string $prefix The prefix for the name of the temporary file. (default: php-)
      * @param string $mode   The file open mode. (default: w+)
      *
-     * @return File The new file object.
+     * @return $this The new file object.
      *
      * @throws FileException If the temporary file could not be created.
      */
     public static function createTemp($prefix = 'php-', $mode = 'w+')
     {
         return new static(static::createTempPath($prefix), $mode);
+    }
+
+    /**
+     * Creates a new, named temporary file and returns its file object.
+     *
+     * @param string $name The name of the temporary file.
+     * @param string $mode The file open mode. (default: w+)
+     *
+     * @return $this The new file object.
+     */
+    public static function createTempNamed($name, $mode = 'w+')
+    {
+        return new static(static::createTempPathNamed($name), $mode);
     }
 
     /**
@@ -98,6 +111,48 @@ class File extends SplFileObject
         // @codeCoverageIgnoreEnd
 
         return $temp;
+    }
+
+    /**
+     * Creates a new, named temporary file and returns its path.
+     *
+     * @param string $name The name for the temporary file.
+     *
+     * @return string The path to the temporary file.
+     *
+     * @throws FileException If the temporary file could not be created.
+     */
+    public static function createTempPathNamed($name)
+    {
+        $dir = static::createTempPath();
+
+        if (!unlink($dir)) {
+            // @codeCoverageIgnoreStart
+            throw new FileException(
+                'The temporary file could not be deleted.'
+            );
+        }
+        // @codeCoverageIgnoreEnd
+
+        if (!mkdir($dir)) {
+            // @codeCoverageIgnoreStart
+            throw new FileException(
+                'A new temporary directory could not be created.'
+            );
+        }
+        // @codeCoverageIgnoreEnd
+
+        $path = $dir . DIRECTORY_SEPARATOR . $name;
+
+        if (!touch($path)) {
+            // @codeCoverageIgnoreStart
+            throw new FileException(
+                'A new temporary file could not be created.'
+            );
+        }
+        // @codeCoverageIgnoreEnd
+
+        return $path;
     }
 
     /**
