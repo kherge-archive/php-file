@@ -143,6 +143,23 @@ class FileException extends RuntimeException
     }
 
     /**
+     * Creates an exception for a failed path removal.
+     *
+     * @param string $path The path that should have been removed.
+     *
+     * @return FileException The new exception.
+     */
+    public static function removeFailed($path)
+    {
+        return new self(
+            sprintf(
+                'The path "%s" could not be removed.',
+                $path
+            )
+        );
+    }
+
+    /**
      * Creates an exception for a failed seek.
      *
      * @param SplFileObject $file     The file object in context.
