@@ -243,7 +243,13 @@ class File extends SplFileObject
         $enclosure = '"',
         $escape = '\\'
     ) {
-        if (false === ($length = parent::fputcsv($fields, $delimiter, $enclosure, $escape))) {
+        if ('\\' === $escape) {
+            $length = parent::fputcsv($fields, $delimiter, $enclosure);
+        } else {
+            $length = parent::fputcsv($fields, $delimiter, $enclosure, $escape);
+        }
+
+        if (false === $length) {
             throw FileException::writeFailed($this);
         }
 
