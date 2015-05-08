@@ -237,9 +237,13 @@ class File extends SplFileObject
     /**
      * @override
      */
-    public function fputcsv($fields, $delimiter = ',', $enclosure = '"')
-    {
-        if (false === ($length = parent::fputcsv($fields, $delimiter, $enclosure))) {
+    public function fputcsv(
+        $fields,
+        $delimiter = ',',
+        $enclosure = '"',
+        $escape = '\\'
+    ) {
+        if (false === ($length = parent::fputcsv($fields, $delimiter, $enclosure, $escape))) {
             throw FileException::writeFailed($this);
         }
 
