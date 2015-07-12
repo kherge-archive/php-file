@@ -3,7 +3,6 @@ File
 
 [![SensioLabsInsight][]](https://insight.sensiolabs.com/projects/cd51bc0a-cb5c-41df-b500-9be18b98fd5d)
 [![Build Status][]](https://travis-ci.org/kherge/php-file)
-[![Coverage Status][]](https://coveralls.io/r/kherge/php-file?branch=master)
 [![Latest Stable Version][]](https://packagist.org/packages/kherge/file)
 [![Latest Unstable Version][]](https://packagist.org/packages/kherge/file)
 [![Total Downloads][]](https://packagist.org/packages/kherge/file)
@@ -59,7 +58,6 @@ This library is available under the [MIT license](LICENSE).
 
 [SensioLabsInsight]: https://insight.sensiolabs.com/projects/cd51bc0a-cb5c-41df-b500-9be18b98fd5d/mini.png
 [Build Status]: https://travis-ci.org/kherge/php-file.png?branch=master
-[Coverage Status]: https://coveralls.io/repos/kherge/php-file/badge.png?branch=master
 [Latest Stable Version]: https://poser.pugx.org/kherge/file/v/stable.png
 [Latest Unstable Version]: https://poser.pugx.org/kherge/file/v/unstable.png
 [Total Downloads]: https://poser.pugx.org/kherge/file/downloads.png
