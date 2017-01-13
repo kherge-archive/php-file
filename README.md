@@ -2,7 +2,7 @@ File
 ====
 
 [![SensioLabsInsight][]](https://insight.sensiolabs.com/projects/cd51bc0a-cb5c-41df-b500-9be18b98fd5d)
-[![Build Status][]](https://travis-ci.org/kherge/php-file)
+[![Build Status][]](https://travis-ci.org/kherge-abandoned/php-file)
 [![Latest Stable Version][]](https://packagist.org/packages/kherge/file)
 [![Latest Unstable Version][]](https://packagist.org/packages/kherge/file)
 [![Total Downloads][]](https://packagist.org/packages/kherge/file)
